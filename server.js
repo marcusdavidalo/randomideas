@@ -1,20 +1,22 @@
 const express = require('express');
-const port = 5000;
+require('dotenv').config();
+const port = process.env.PORT || 5000;
+const connectDB = require('./config/db');
+
+connectDB();
 
 const app = express();
 
-//Body Parser middleware
+//Body Parser middleware - allows us to handle raw json
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use('/api/ideas', require('./routes/ideas'));
 
-//routes
+//routes - where we handle our endpoints
 app.get('/', (req, res) => {
   res.json({
     message: 'Welcome to RandomIdeas API ft. MasterJake of TropangCharat64',
   });
 });
-
-const ideasRouter = require('./routes/ideas');
-app.use('/api/ideas', ideasRouter);
 
 app.listen(port, () => console.log(`Server listening in port ${port}`));
