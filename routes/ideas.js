@@ -26,27 +26,26 @@ const ideas = [
   },
 ];
 
-// Get all ideas
+//get all ideas
 router.get('/', async (req, res) => {
   try {
     const ideas = await Idea.find();
     res.json({ success: true, data: ideas });
-  } catch (err) {
-    console.log(err);
-    res.status(500).json({ success: false, error: 'Something went wrong' });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ success: false, error: 'Something Went Wrong' });
   }
 });
 
 //get a single idea
-router.get('/:id', (req, res) => {
-  const idea = ideas.find((idea) => idea.id === +req.params.id);
-
-  if (!idea) {
-    return res
-      .status(404)
-      .json({ success: false, error: 'Resource not found' });
+router.get('/:id', async (req, res) => {
+  try {
+    const idea = await Idea.findById(req.params.id);
+    res.json({ success: true, data: idea });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ success: false, error: 'Something Went Wrong' });
   }
-  res.json({ success: true, data: idea });
 });
 
 //Add an idea
@@ -60,46 +59,40 @@ router.post('/', async (req, res) => {
   try {
     const savedIdea = await idea.save();
     res.json({ success: true, data: savedIdea });
-  } catch (err) {
-    console.log(err);
+  } catch (error) {
+    console.log(error);
     res.status(500).json({ success: false, error: 'Something Went Wrong' });
   }
 });
 
-// Update Idea
+//Update Idea
 router.put('/:id', async (req, res) => {
   try {
-    const idea = await Idea.findByIdAndUpdate(req.params.id, req.body, {
-      new: true,
-      runValidators: true,
-    });
-
-    if (!idea) {
-      return res
-        .status(404)
-        .json({ success: false, error: 'Resource not found' });
-    }
-
-    res.json({ success: true, data: idea });
-  } catch (err) {
-    console.log(err);
-    res.status(500).json({ success: false, error: 'Something went wrong' });
+    const updatedIdea = await Idea.findByIdAndUpdate(
+      req.params.id,
+      {
+        $set: {
+          text: req.body.text,
+          tag: req.body.tag,
+        },
+      },
+      { new: true }
+    );
+    res.json({ success: true, data: updatedIdea });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ success: false, error: 'Something Went Wrong' });
   }
 });
 
-// Delete idea
+//Delete idea
 router.delete('/:id', async (req, res) => {
   try {
-    const idea = await Idea.findByIdAndDelete(req.params.id);
-    if (!idea) {
-      return res
-        .status(404)
-        .json({ success: false, error: 'Resource not found' });
-    }
-    res.json({ success: true, data: idea });
-  } catch (err) {
-    console.log(err);
-    res.status(500).json({ success: false, error: 'Something went wrong' });
+    await Idea.findByIdAndDelete(req.params.id);
+    res.json({ success: true, data: {} });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ success: false, error: 'Something Went Wrong' });
   }
 });
 
