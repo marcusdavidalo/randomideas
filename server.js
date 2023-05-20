@@ -25,7 +25,7 @@ app.use('/api/ideas', require('./routes/ideas')); // Ideas Routes
 // routes - where we handle our endpoints
 app.get('/', (req, res) => {
   res.json({
-    message: 'Welcome to RandomIdeas API ft. MasterJake of TropangCharat64',
+    message: 'Welcome to RandomIdeas API',
   });
 });
 
