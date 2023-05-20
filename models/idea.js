@@ -1,3 +1,4 @@
+// this idea.js is the model for the ideas collection in the database
 const mongoose = require('mongoose');
 const IdeaSchema = new mongoose.Schema({
   text: {
