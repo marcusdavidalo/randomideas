@@ -176,6 +176,73 @@ form label {
   font-size: 14px;
 }
 
+.frosted-blur {
+  backdrop-filter: blur(10px) !important;
+  background-color: rgb(31, 41, 55, 0.25);
+  pointer-events: all !important;
+}
+
+.frosted-blur:focus {
+  border-color: rgb(141, 141, 141) !important;
+  --tw-ring-color: none !important;
+  --tw-ring-shadow: none !important;
+}
+
+/* Adjust z-index to make sure text is on top of the overlay */
+.frosted-blur::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  z-index: -1 !important;
+}
+
+/* Light Sky Blue Button Frosted */
+.frosted-blue {
+  backdrop-filter: blur(10px) !important;
+  background-color: rgba(0, 255, 255, 0.5);
+  pointer-events: all !important;
+}
+
+.frosted-blue::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  z-index: -1 !important;
+}
+
+.frosted-blue:hover {
+  backdrop-filter: blur(10px) !important;
+  background-color: rgba(0, 255, 255, 0.35);
+}
+
+/* frosted dark */
+.frosted-dark {
+  backdrop-filter: blur(10px) !important;
+  background-color: rgba(31, 41, 55, 0.5);
+  pointer-events: all !important;
+}
+
+.frosted-dark::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  z-index: -1 !important;
+}
+
+.frosted-dark:hover {
+  backdrop-filter: blur(10px) !important;
+  background-color: rgba(31, 41, 55, 0.25);
+}
+
 @media (max-width: 768px) {
   .modal-box {
     width: 90%;
