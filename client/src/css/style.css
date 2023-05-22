@@ -131,6 +131,58 @@ form label {
   background: steelblue;
 }
 
+.tag-art {
+  background: plum;
+}
+
+.tag-food {
+  background: yellow;
+}
+
+.tag-music {
+  background: brown;
+}
+
+.tag-travel {
+  background: coral;
+}
+
+.tag-sports {
+  background: green;
+}
+
+.tag-fashion {
+  background: darkmagenta;
+}
+
+.tag-books {
+  background: darkslategray;
+}
+
+.tag-movies {
+  background: darkorange;
+}
+
+.tag-gaming {
+  background: darkred;
+}
+
+.tag-photography {
+  background: darkgoldenrod;
+}
+
+.tag-fitness {
+  background: darkgreen;
+}
+
+.tag-science {
+  background: darkblue;
+}
+
+.tag-music {
+  background: brown;
+}
+
 .tag-software {
   background: coral;
 }
@@ -149,6 +201,18 @@ form label {
 
 .tag-inventions {
   background: orange;
+}
+
+.tag-nature {
+  background: goldenrod;
+}
+
+.tag-finance {
+  background: darkcyan;
+}
+
+.tag-humor {
+  background: darkkhaki;
 }
 
 .delete {

@@ -42,9 +42,16 @@ document.addEventListener('DOMContentLoaded', () => {
           const deleteBtn = document.createElement('button');
           deleteBtn.classList.add('delete');
           deleteBtn.innerHTML = '<i class="fas fa-times"></i>';
-          deleteBtn.addEventListener('click', () => {
-            deleteIdea(idea._id);
-          });
+
+          // Check if the user is the owner of the idea
+          if (idea.username === 'current_user') {
+            deleteBtn.style.display = 'block';
+            deleteBtn.addEventListener('click', () => {
+              deleteIdea(idea._id);
+            });
+          } else {
+            deleteBtn.style.display = 'none';
+          }
 
           const title = document.createElement('h3');
           title.textContent = idea.text;
@@ -133,6 +140,9 @@ document.addEventListener('DOMContentLoaded', () => {
         tagInput.value = '';
         close(); // Close the modal
         fetchIdeas(); // Refresh ideas after submission
+
+        // Store the username in localStorage
+        localStorage.setItem('username', username);
       } else {
         console.error('Failed to submit idea:', data.error);
       }
