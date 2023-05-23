@@ -34,6 +34,9 @@ document.addEventListener('DOMContentLoaded', () => {
         // Clear existing ideas
         ideaList.innerHTML = '';
 
+        // Retrieve the username from localStorage
+        const username = localStorage.getItem('username');
+
         // Display ideas on the page
         ideas.forEach((idea) => {
           const card = document.createElement('div');
@@ -44,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
           deleteBtn.innerHTML = '<i class="fas fa-times"></i>';
 
           // Check if the user is the owner of the idea
-          if (idea.username === 'current_user') {
+          if (idea.username === username) {
             deleteBtn.style.display = 'block';
             deleteBtn.addEventListener('click', () => {
               deleteIdea(idea._id);
@@ -56,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
           const title = document.createElement('h3');
           title.textContent = idea.text;
 
-          // Display tag if it exists and add the appropriate class for the tag like tag-technology, tag-business, etc. while also makin the first letter uppercase
+          // Display tag if it exists and add the appropriate class for the tag like tag-technology, tag-business, etc. while also making the first letter uppercase
           const tag = document.createElement('p');
           if (idea.tag) {
             tag.classList.add(`tag`, `tag-${idea.tag.toLowerCase()}`); // Adds the appropriate class for the tag like tag-technology, tag-business, etc.
