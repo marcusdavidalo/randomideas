@@ -59,14 +59,14 @@ document.addEventListener('DOMContentLoaded', () => {
           // Display tag if it exists and add the appropriate class for the tag like tag-technology, tag-business, etc. while also makin the first letter uppercase
           const tag = document.createElement('p');
           if (idea.tag) {
-            tag.classList.add(`tag`, `tag-${idea.tag.toLowerCase()}`); // Add the appropriate class for the tag like tag-technology, tag-business, etc.
+            tag.classList.add(`tag`, `tag-${idea.tag.toLowerCase()}`); // Adds the appropriate class for the tag like tag-technology, tag-business, etc.
             tag.textContent =
               idea.tag.charAt(0).toUpperCase() + idea.tag.slice(1); // Make the first letter uppercase
           }
 
           const postedBy = document.createElement('p');
           postedBy.innerHTML = `Posted on <span class="date">${formatDate(
-            idea.date // Format date as "Month DD, YYYY"
+            idea.date // Format date as "Month DD, YYYY via the formatDate() function outside of the fetchIdeas() function"
           )}</span> by <span class="author">${idea.username}</span>`;
 
           card.appendChild(deleteBtn);
@@ -151,7 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Format date as "Month DD, YYYY"
+  // Format date as "Month DD, YYYY" // Utility function - can be used anywhere by calling formatDate()
   function formatDate(dateString) {
     const date = new Date(dateString);
     const options = { month: 'long', day: 'numeric', year: 'numeric' };
