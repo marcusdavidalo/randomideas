@@ -41,7 +41,7 @@ header {
   height: 100%;
   width: 100%;
   overflow: auto;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.1625);
 }
 
 .modal-box {
@@ -244,6 +244,7 @@ form label {
   backdrop-filter: blur(10px) !important;
   background-color: rgb(31, 41, 55, 0.25);
   pointer-events: all !important;
+  color: #f4f4f4;
 }
 
 .frosted-blur:focus {
@@ -268,6 +269,7 @@ form label {
   backdrop-filter: blur(10px) !important;
   background-color: rgba(0, 255, 255, 0.5);
   pointer-events: all !important;
+  color: #f4f4f4;
 }
 
 .frosted-blue::before {
@@ -290,6 +292,7 @@ form label {
   backdrop-filter: blur(10px) !important;
   background-color: rgba(31, 41, 55, 0.5);
   pointer-events: all !important;
+  color: #f4f4f4;
 }
 
 .frosted-dark::before {

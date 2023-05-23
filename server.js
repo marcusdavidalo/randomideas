@@ -26,6 +26,12 @@ app.get('/', (req, res) => {
   });
 });
 
+app.get('/api', (req, res) => {
+  res.json({
+    message: 'ulol',
+  });
+});
+
 const ideasRouter = require('./routes/ideas');
 app.use('/api/ideas', ideasRouter);
 
